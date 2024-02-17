@@ -14,7 +14,7 @@ const BirthdateSelector = () => {
         </li>
         <li>
           We encourage you to explore and feel comfortable making mistakes; our
-          primary focus is on examining the UI's functionality.
+          primary focus is on examining the UI functionality.
         </li>
         <li>
           Our main objective is to assess the efficiency and accuracy of date
@@ -24,7 +24,7 @@ const BirthdateSelector = () => {
           Please ensure to focus on selecting your birth date accurately, giving
           priority to accuracy over speed.
         </li>
-        <li>Click on the "Next" button below to proceed. Thank you.</li>
+        <li>Click on the Next button below to proceed. Thank you.</li>
       </ul>
       {/* Next.js Link component for client-side navigation */}
       <Link href="/variant-a">
