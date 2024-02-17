@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const page = () => {
+const Page = () => {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
@@ -86,7 +86,7 @@ const page = () => {
 
   const navigateToVariantB = () => {
     console.log("Navigating to Variant B...");
-    window.location.href = "/variant-b"; // Navigate to Variant B page
+    window.location.href = "/variant-b"; // Navigate to Variant B Page
     console.log("Navigation complete.");
   };
 
@@ -170,4 +170,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

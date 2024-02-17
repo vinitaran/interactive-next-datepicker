@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [dateInput, setDateInput] = useState("");
   const [keyCount, setKeyCount] = useState(0);
   const [backspaceCount, setBackspaceCount] = useState(0);
@@ -140,4 +140,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
