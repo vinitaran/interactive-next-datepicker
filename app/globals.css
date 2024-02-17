@@ -2,19 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -30,4 +18,179 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  margin: 50px 20px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+h1 {
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the font bold */
+  margin: 1em 0;
+}
+
+
+.steps {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.steps li {
+  margin-bottom: 10px;
+}
+
+
+.form-group.date-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.form-group.date-picker .form-group {
+  margin-right: 10px; /* Adjust spacing between input fields */
+}
+
+.form-group.date-picker label {
+  margin-right: 5px;
+}
+
+.form-group.date-picker input {
+  width: 80px; /* Adjust input field width */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+}
+
+.form-group.date-picker input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.notification-content{
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 420px;
+  color: #868484;
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px 0;
+  row-gap: 20px;
+}
+
+.date-input {
+  width: 250px;
+  height: 60px;
+  color: #444;
+  font-size: 1.6rem;
+  border-radius: 8px;
+  border: 0.5px solid #949494;
+  letter-spacing: 8px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.error-summary {
+  color: green;
+}
+
+.error-summary.error {
+  color: red;
+}
+
+.calculate {
+  text-align: center;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  background-size: 200% auto;
+  background-color: #dc2743;
+  background-image: linear-gradient(
+    to right,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border: none;
+  transition: 560ms;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.calculate:hover {
+  background-position: right center;
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+.calculate:active,
+.calculate:focus {
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+.notification-modal {
+  display: none; /* Initially hide the notification modal */
+}
+
+.notification-content {
+  text-align: center;
+  padding: 0 1em;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
 }
