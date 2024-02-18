@@ -84,7 +84,7 @@ h1 {
 }
 
 .form-group.date-picker input {
-  width: 80px; /* Adjust input field width */
+  width: 60px; /* Adjust input field width */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;

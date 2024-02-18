@@ -133,6 +133,7 @@ const Page = () => {
             maxLength={4}
             onClick={handleInputClick}
             onKeyDown={handleKeyDown}
+            style={{ width: "80px" }}
           />
         </div>
       </div>
