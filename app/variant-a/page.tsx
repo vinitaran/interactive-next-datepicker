@@ -54,12 +54,7 @@ const Page = () => {
 
     const notificationModal = document.getElementById("notificationModal");
     if (notificationModal) {
-      const notificationContent = notificationModal.querySelector(
-        ".notification-content"
-      );
-      if (notificationContent instanceof HTMLElement) {
-        notificationContent.style.display = "block";
-      }
+      notificationModal.style.display = "block";
     }
   };
 
