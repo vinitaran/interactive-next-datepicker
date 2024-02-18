@@ -13,10 +13,12 @@ const Page = () => {
   const [isTimeStarted, setIsTimeStarted] = useState(false);
   const [isValidDate, setIsValidDate] = useState(false);
   const [errorSummary, setErrorSummary] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
     // Start the timer when the component mounts
-    startTimer();
+    setStartTime(Date.now());
+    setIsTimeStarted(true);
   }, []);
 
   const navigateToVariantB = () => {
@@ -29,11 +31,6 @@ const Page = () => {
   const startTimer = () => {
     setStartTime(Date.now());
     setIsTimeStarted(true);
-  };
-
-  const stopTimer = () => {
-    setEndTime(Date.now());
-    setIsTimeStarted(false);
   };
 
   const autoFormatDate = (input: string) => {
@@ -64,9 +61,14 @@ const Page = () => {
     if (!isTimeStarted) startTimer();
   };
 
+  const stopTimer = () => {
+    setEndTime(Date.now());
+    setIsTimeStarted(false);
+  };
+
   const validateDate = () => {
-    const modal = document.getElementById("notificationModal");
-    if (modal) modal.style.display = "block";
+    setIsModalVisible(true);
+
     if (dateInput) {
       const [day, month, year] = dateInput.split("/");
       const formattedDate = new Date(`${year}-${month}-${day}`);
@@ -78,10 +80,15 @@ const Page = () => {
       setIsValidDate(false);
       setErrorSummary("");
     }
-    // Stop the timer when validating
+
+    // Stop the timer and then calculate speed after the state updates
     stopTimer();
-    calculateSpeed();
   };
+
+  useEffect(() => {
+    // Calculate speed when endTime state updates
+    calculateSpeed();
+  }, [endTime]);
 
   const keyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const keyCode = event.keyCode || event.which;
@@ -102,39 +109,43 @@ const Page = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Enter your Birthday</h1>
-      <input
-        id="dateInput"
-        className="date-input"
-        type="text"
-        placeholder="DD/MM/YYYY"
-        value={dateInput}
-        onChange={onDateInputChange}
-        onKeyDown={keyDown}
-      />
+    <div className="body-variant-b">
+      <div className="container">
+        <h1>Enter your Birthday</h1>
+        <input
+          id="dateInput"
+          className="date-input"
+          type="text"
+          placeholder="DD/MM/YYYY"
+          value={dateInput}
+          onChange={onDateInputChange}
+          onKeyDown={keyDown}
+        />
 
-      <div className={`error-summary ${isValidDate ? "" : "error"}`}>
-        {errorSummary}
-      </div>
-      <div>Key Count: {keyCount}</div>
-      <div>Backspace Count: {backspaceCount}</div>
-      <div>Time Taken: {timeTaken} milliseconds</div>
-      <div>Average Speed: {averageSpeed.toFixed(2)} keys per second</div>
-      <button className="calculate" onClick={validateDate}>
-        Validate
-      </button>
+        {isModalVisible && (
+          <div className="new-notification-modal" id="newNotificationModal">
+            <div className="new-notification-content">
+              <h2 style={{ fontSize: "1.2em", fontWeight: "bold" }}>
+                Take a screenshot!
+              </h2>
+              <p>Click below to continue.</p>
+              <button className="btn btn-primary" onClick={navigateToVariantB}>
+                Continue
+              </button>
+            </div>
+          </div>
+        )}
 
-      <div className="notification-modal" id="notificationModal">
-        <div className="notification-content">
-          <h2>Take a Screenshot!</h2>
-          <p>
-            Please take a screenshot of your submission. Click below to proceed.
-          </p>
-          <button className="btn btn-primary" onClick={navigateToVariantB}>
-            Proceed
-          </button>
+        <div className={`error-summary ${isValidDate ? "" : "error"}`}>
+          {errorSummary}
         </div>
+        <div>Key Count: {keyCount}</div>
+        <div>Backspace Count: {backspaceCount}</div>
+        <div>Time Taken: {timeTaken} milliseconds</div>
+        <div>Average Speed: {averageSpeed.toFixed(2)} keys per second</div>
+        <button className="calculate" onClick={validateDate}>
+          Validate
+        </button>
       </div>
     </div>
   );

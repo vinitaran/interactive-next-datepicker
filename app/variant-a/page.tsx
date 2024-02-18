@@ -15,6 +15,7 @@ const Page = () => {
   );
   const [timeTaken, setTimeTaken] = useState<number | null>(null);
   const [averageTypingSpeed, setAverageTypingSpeed] = useState(0);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
     setStartTime(Date.now()); // Record the start time when the component mounts
@@ -39,6 +40,8 @@ const Page = () => {
   };
 
   const handleSubmit = () => {
+    setIsModalVisible(true);
+
     stopTimer();
     const currentTime = Date.now();
     const timeTakenInSeconds = (currentTime - (startTime || 0)) / 1000;
@@ -51,11 +54,7 @@ const Page = () => {
 
     const date = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
     console.log(date); // Dispatch or handle the date as needed
-
-    const notificationModal = document.getElementById("notificationModal");
-    if (notificationModal) {
-      notificationModal.style.display = "block";
-    }
+    console.log(isModalVisible);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -138,18 +137,19 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="notification-modal" id="notificationModal">
-        <div className="notification-content">
-          <h2>Take a Screenshot!</h2>
-          <p>
-            Please take a screenshot of your submission. Click below to proceed
-            to Variant B.
-          </p>
-          <button className="btn btn-primary" onClick={navigateToVariantB}>
-            Proceed to Variant B
-          </button>
+      {isModalVisible && (
+        <div className="new-notification-modal" id="newNotificationModal">
+          <div className="new-notification-content">
+            <h2 style={{ fontSize: "1.2em", fontWeight: "bold" }}>
+              Take a screenshot!
+            </h2>
+            <p>Click below to continue.</p>
+            <button className="btn btn-primary" onClick={navigateToVariantB}>
+              Continue
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       <div>Key Count: {keyCount}</div>
       <div>Backspace Count: {backspaceCount}</div>

@@ -172,11 +172,9 @@ h1 {
   transform: scale(1.01);
 }
 
-.notification-modal {
-  display: none; /* Initially hide the notification modal */
-}
 
-.notification-content {
+
+.new-notification-content{
   text-align: center;
   padding: 0 1em;
 }
@@ -193,4 +191,10 @@ h1 {
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+
+.body-variant-b{
+  display: flex;
+  justify-content: center;
 }
