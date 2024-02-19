@@ -164,7 +164,7 @@ const Page = () => {
         <div className="new-notification-modal" id="newNotificationModal">
           <div className="new-notification-content">
             <h2 style={{ fontSize: "1.2em", fontWeight: "bold" }}>
-              Take a screenshot!
+              Take a screenshot! or record all values
             </h2>
             <p>Click below to continue.</p>
             <button className="btn btn-primary" onClick={navigateToVariantB}>
