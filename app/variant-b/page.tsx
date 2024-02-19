@@ -152,6 +152,8 @@ const Page = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+
+              width: "300px",
             }}
           >
             <div className="new-notification-content">
