@@ -161,10 +161,22 @@ const Page = () => {
       </div>
 
       {isModalVisible && (
-        <div className="new-notification-modal" id="newNotificationModal">
+        <div
+          className="new-notification-modal"
+          id="newNotificationModal"
+          style={{
+            margin: "1em",
+            border: "2px solid red",
+            padding: "10px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "300px",
+          }}
+        >
           <div className="new-notification-content">
             <h2 style={{ fontSize: "1.2em", fontWeight: "bold" }}>
-              Take a screenshot! or record all values
+              Take a screenshot!
             </h2>
             <p>Click below to continue.</p>
             <button className="btn btn-primary" onClick={navigateToVariantB}>
