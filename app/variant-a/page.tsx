@@ -58,7 +58,13 @@ const Page = () => {
       console.log(date); // Dispatch or handle the date as needed
       console.log(isModalVisible);
     } else {
+      // Alert the user to fill out all fields before submitting
       alert("Please fill out all fields before submitting.");
+
+      // Reset the values of all fields
+      setDay("");
+      setMonth("");
+      setYear("");
     }
   };
 
@@ -143,6 +149,17 @@ const Page = () => {
         </div>
       </div>
 
+      <button className="btn btn-primary mt-3" onClick={handleSubmit}>
+        Submit
+      </button>
+
+      <div>Key Count: {keyCount}</div>
+      <div>Backspace Count: {backspaceCount}</div>
+      <div>Time Taken: {(timeTaken || 0 / 1000).toFixed(2)} seconds</div>
+      <div>
+        Average Typing Speed: {averageTypingSpeed.toFixed(2)} keys per second
+      </div>
+
       {isModalVisible && (
         <div className="new-notification-modal" id="newNotificationModal">
           <div className="new-notification-content">
@@ -156,17 +173,6 @@ const Page = () => {
           </div>
         </div>
       )}
-
-      <div>Key Count: {keyCount}</div>
-      <div>Backspace Count: {backspaceCount}</div>
-      <div>Time Taken: {(timeTaken || 0 / 1000).toFixed(2)} seconds</div>
-      <div>
-        Average Typing Speed: {averageTypingSpeed.toFixed(2)} keys per second
-      </div>
-
-      <button className="btn btn-primary mt-3" onClick={handleSubmit}>
-        Submit
-      </button>
     </div>
   );
 };

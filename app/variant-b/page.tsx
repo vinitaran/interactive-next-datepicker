@@ -129,6 +129,18 @@ const Page = () => {
           onKeyDown={keyDown}
         />
 
+        <button className="calculate" onClick={validateDate}>
+          Validate
+        </button>
+
+        <div className={`error-summary ${isValidDate ? "" : "error"}`}>
+          {errorSummary}
+        </div>
+        <div>Key Count: {keyCount}</div>
+        <div>Backspace Count: {backspaceCount}</div>
+        <div>Time Taken: {timeTaken} milliseconds</div>
+        <div>Average Speed: {averageSpeed.toFixed(2)} keys per second</div>
+
         {isModalVisible && (
           <div className="new-notification-modal" id="newNotificationModal">
             <div className="new-notification-content">
@@ -142,17 +154,6 @@ const Page = () => {
             </div>
           </div>
         )}
-
-        <div className={`error-summary ${isValidDate ? "" : "error"}`}>
-          {errorSummary}
-        </div>
-        <div>Key Count: {keyCount}</div>
-        <div>Backspace Count: {backspaceCount}</div>
-        <div>Time Taken: {timeTaken} milliseconds</div>
-        <div>Average Speed: {averageSpeed.toFixed(2)} keys per second</div>
-        <button className="calculate" onClick={validateDate}>
-          Validate
-        </button>
       </div>
     </div>
   );
