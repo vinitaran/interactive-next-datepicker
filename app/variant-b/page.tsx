@@ -67,21 +67,28 @@ const Page = () => {
   };
 
   const validateDate = () => {
-    setIsModalVisible(true);
-
     if (dateInput) {
       const [day, month, year] = dateInput.split("/");
       const formattedDate = new Date(`${year}-${month}-${day}`);
-      setIsValidDate(
+
+      if (
         !isNaN(formattedDate.getDate()) &&
-          formattedDate.getFullYear() == parseInt(year)
-      );
+        formattedDate.getFullYear() === parseInt(year)
+      ) {
+        setIsValidDate(true);
+        setErrorSummary("");
+      } else {
+        setIsValidDate(false);
+        setErrorSummary("Please enter a valid date in the format DD/MM/YYYY.");
+        return; // Do not proceed further if the date is not valid
+      }
     } else {
       setIsValidDate(false);
-      setErrorSummary("");
+      setErrorSummary("Please enter a date.");
+      return; // Do not proceed further if the date is empty
     }
 
-    // Stop the timer and then calculate speed after the state updates
+    setIsModalVisible(true);
     stopTimer();
   };
 

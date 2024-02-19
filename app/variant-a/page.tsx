@@ -40,21 +40,26 @@ const Page = () => {
   };
 
   const handleSubmit = () => {
-    setIsModalVisible(true);
+    // Check if all fields are filled out
+    if (day && month && year) {
+      setIsModalVisible(true);
 
-    stopTimer();
-    const currentTime = Date.now();
-    const timeTakenInSeconds = (currentTime - (startTime || 0)) / 1000;
+      stopTimer();
+      const currentTime = Date.now();
+      const timeTakenInSeconds = (currentTime - (startTime || 0)) / 1000;
 
-    setTimeTaken(timeTakenInSeconds); // Update the timeTaken state
-    if (timeTakenInSeconds && keyCount > 0) {
-      const speed = (keyCount + backspaceCount) / timeTakenInSeconds;
-      setAverageTypingSpeed(parseFloat(speed.toFixed(2)));
+      setTimeTaken(timeTakenInSeconds); // Update the timeTaken state
+      if (timeTakenInSeconds && keyCount > 0) {
+        const speed = (keyCount + backspaceCount) / timeTakenInSeconds;
+        setAverageTypingSpeed(parseFloat(speed.toFixed(2)));
+      }
+
+      const date = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+      console.log(date); // Dispatch or handle the date as needed
+      console.log(isModalVisible);
+    } else {
+      alert("Please fill out all fields before submitting.");
     }
-
-    const date = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-    console.log(date); // Dispatch or handle the date as needed
-    console.log(isModalVisible);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
